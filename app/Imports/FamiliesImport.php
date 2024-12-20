@@ -15,23 +15,16 @@ class FamiliesImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
-        if(isset($row['name'])) {
-
-            // Check for the Family
-            $isCreated = Family::where('name', $row['name'])
-                ->exists();
-
-            if(!$isCreated) {
-                return new Family([
-                    'fullname' => $row['name'],
-                    'rooms' => $row['room_type'],
-                    'building' => $row['building'],
-                    'check_in' => $row['check_in'],
-                    'check_out' => $row['check_out'],
-                    'package_type' => $row['package_type'],
-                    'family_size' => $row['family_size'] ?? 0,
-                ]);
-            }
+        if(isset($row['name']) && $row['name']) {
+            return new Family([
+                'fullname' => $row['name'],
+                'rooms' => $row['room_type'],
+                'building' => $row['building'],
+                'check_in' => $row['check_in'],
+                'check_out' => $row['check_out'],
+                'package_type' => $row['package_type'],
+                'family_size' => $row['family_size'] ?? 0,
+            ]);
         }
     }
 }

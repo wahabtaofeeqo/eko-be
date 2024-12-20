@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('phone')->nullable();
             $table->text('title')->nullable();
             $table->text('category')->nullable();
+            $table->text('qr_path')->nullable();
             $table->text('organization')->nullable();
             $table->integer('family_id')->default(0);
         });
